@@ -20,11 +20,11 @@ INSERT INTO public.condition_immunities (creature, condition) VALUES (11, 'Deafe
 INSERT INTO public.condition_immunities (creature, condition) VALUES (11, 'Exhausted');
 INSERT INTO public.condition_immunities (creature, condition) VALUES (11, 'Frightened');
 INSERT INTO public.condition_immunities (creature, condition) VALUES (11, 'Prone');
-INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES (180, 18, null, 20, null, 'Large', 22, 6, 'LE', 2, 2, 'd10', 10, 14, 18, 17, 15, 17);
-INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES (59, 13, 40, null, null, 'Large', 13, 7, 'U', 1, 2, 'd10', 20, 12, 17, 3, 12, 7);
-INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES (7, 15, 30, null, null, 'Small', 9, 8, 'NE', 2, 2, 'd6', 8, 14, 10, 10, 8, 8);
-INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES (58, 12, 15, null, null, 'Medium', 11, 9, 'TN', 1, 2, 'd8', 17, 12, 15, 5, 13, 8);
-INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES (84, 6, 15, null, null, 'Large', 8, 11, 'U', -4, 2, 'd10', 14, 3, 20, 1, 6, 1);
+INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma, "money (cp)") VALUES (180, 18, null, 20, null, 'Large', 22, 6, 'LE', 2, 2, 'd10', 10, 14, 18, 17, 15, 17, null);
+INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma, "money (cp)") VALUES (59, 13, 40, null, null, 'Large', 13, 7, 'U', 1, 2, 'd10', 20, 12, 17, 3, 12, 7, null);
+INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma, "money (cp)") VALUES (7, 15, 30, null, null, 'Small', 9, 8, 'NE', 2, 2, 'd6', 8, 14, 10, 10, 8, 8, null);
+INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma, "money (cp)") VALUES (58, 12, 15, null, null, 'Medium', 11, 9, 'TN', 1, 2, 'd8', 17, 12, 15, 5, 13, 8, null);
+INSERT INTO public.creature (max_pf, ac, speed, speed_fly, speed_swim, size, passive_perception, id, alignment, initiative, proficiency, hit_dice, strength, dexterity, constitution, intelligence, wisdom, charisma, "money (cp)") VALUES (84, 6, 15, null, null, 'Large', 8, 11, 'U', -4, 2, 'd10', 14, 3, 20, 1, 6, 1, null);
 INSERT INTO public.damage_immunities (creature, damage) VALUES (9, 'Acid');
 INSERT INTO public.item (name, id, description, weight, "cost (cp)") VALUES ('Padded Armor', 1, 'Padded armor consists of quilted layers of cloth and batting.', 8, 500);
 INSERT INTO public.item (name, id, description, weight, "cost (cp)") VALUES ('Leather Armor', 2, 'The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.', 10, 1000);
@@ -82,11 +82,11 @@ INSERT INTO public.languages (creature, language) VALUES (6, 'Deep Speech');
 INSERT INTO public.languages (creature, language) VALUES (6, 'Undercommon');
 INSERT INTO public.languages (creature, language) VALUES (8, 'Common');
 INSERT INTO public.languages (creature, language) VALUES (8, 'Goblin');
-INSERT INTO public.monster (id, cr, type, name) VALUES (6, 13, 'Aberration', null);
-INSERT INTO public.monster (id, cr, type, name) VALUES (7, 3, 'Monstrosity', null);
-INSERT INTO public.monster (id, cr, type, name) VALUES (8, 0.25, 'Humanoid', null);
-INSERT INTO public.monster (id, cr, type, name) VALUES (9, 2, 'Monstrosity', null);
-INSERT INTO public.monster (id, cr, type, name) VALUES (11, 2, 'Ooze', null);
+INSERT INTO public.monster (id, cr, type, name) VALUES (6, 13, 'Aberration', 'Beholder');
+INSERT INTO public.monster (id, cr, type, name) VALUES (7, 3, 'Monstrosity', 'Owlbear');
+INSERT INTO public.monster (id, cr, type, name) VALUES (8, 0.25, 'Humanoid', 'Goblin');
+INSERT INTO public.monster (id, cr, type, name) VALUES (9, 2, 'Monstrosity', 'Mimic');
+INSERT INTO public.monster (id, cr, type, name) VALUES (11, 2, 'Ooze', 'Gelatinous Cube');
 INSERT INTO public.saving_throws (creature, strength, constitution, intelligence, wisdom, dexterity, charisma) VALUES (6, 0, 0, 8, 7, 0, 8);
 INSERT INTO public.senses (creature, sense) VALUES (6, 'Darkvision');
 INSERT INTO public.senses (creature, sense) VALUES (7, 'Darkvision');
@@ -237,3 +237,58 @@ INSERT INTO public.weapon_properties (id, property) VALUES (52, 'Heavy');
 INSERT INTO public.weapon_properties (id, property) VALUES (52, 'Two-Handed');
 INSERT INTO public.weapon_properties (id, property) VALUES (53, 'Special');
 INSERT INTO public.weapon_properties (id, property) VALUES (53, 'Thrown 5/15');
+INSERT INTO public.action (creature, name, description) VALUES (6, 'Bite', 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 14 (4d6) piercing damage.');
+INSERT INTO public.action (creature, name, description) VALUES (6, 'Eye Rays', e'The beholder shoots three of the following magical eye rays at random (reroll duplicates), choosing one to three targets it can see within 120 feet of it:
+
+1- Charm Ray. The targeted creature must succeed on a DC 16 Wisdom saving throw or be charmed by the beholder for 1 hour, or until the beholder harms the creature.
+
+2- Paralyzing Ray. The targeted creature must succeed on a DC 16 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+
+3- Fear Ray. The targeted creature must succeed on a DC 16 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+
+4- Slowing Ray. The targeted creature must succeed on a DC 16 Dexterity saving throw. On a failed save, the target\'s speed is halved for 1 minute. In addition, the creature can\'t take reactions, and it can take either an action or a bonus action on its turn, not bofh. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+
+5- Enervation Ray. The targeted creature must make a DC 16 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
+
+6- Telekinetic Ray. If the target is a creature, it must succeed on a DC 16 Strength saving throw or the beholder moves it up to 30 feet in any direction. It is restrained by the ray\'s telekinetic grip until the start of the beholder\'s next turn or until the beholder is incapacitated. If the target is an object weighing 300 pounds or less that isn\'t being worn or carried, it is moved up to 30 feet in any direction. The beholder can also exert fine control on objects with this ray, such as manipulating a simple tool or opening a door or a container.
+
+7- Sleep Ray. The targeted creature must succeed on a DC 16 Wisdom saving throw or fall asleep and remain unconscious for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead.
+
+8- Petrification Ray. The targeted creature must make a DC 16 Dexterity saving throw. On a failed save, the creature begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified until freed by the greater restoration spell or other magic.
+
+9- Disintegration Ray. If the target is a creature, it must succeed on a DC 16 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust. If the target is a Large or smaller non magical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger object or creation of magical force, this ray disintegrates a 10-foot cube of it.
+
+10- Death Ray. The targeted creature must succeed on a DC 16 Dexterity saving throw or take 55 (10d10) necrotic damage. The target dies if the ray reduces it to 0 hit points.');
+INSERT INTO public.action (creature, name, description) VALUES (6, 'Legendary Action', e'The beholder can take 3 legendary actions, using the Eye Ray option below. It can take only one legendary action at a time and only at the end of another creature\'s turn. The beholder regains spent legendary actions at the start of its turn.
+
+Eye Ray. The beholder uses one random eye ray.');
+INSERT INTO public.action (creature, name, description) VALUES (7, 'Multiattack', 'The owlbear makes two attacks: one with its beak and one with its claws.');
+INSERT INTO public.action (creature, name, description) VALUES (7, 'Beak', 'Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 10 (1d10 + 5) piercing damage.');
+INSERT INTO public.action (creature, name, description) VALUES (7, 'Claws', 'Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) slashing damage.');
+INSERT INTO public.action (creature, name, description) VALUES (8, 'Scimitar', 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) slashing damage.');
+INSERT INTO public.action (creature, name, description) VALUES (8, 'Shortbow', 'Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage.');
+INSERT INTO public.action (creature, name, description) VALUES (9, 'Pseudopod', 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) bludgeoning damage. If the mimic is in object form, the target is subjected to its Adhesive trait.');
+INSERT INTO public.action (creature, name, description) VALUES (9, 'Bite', 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage plus 4 (1d8) acid damage.');
+INSERT INTO public.action (creature, name, description) VALUES (11, 'Pseudopod', 'Melee Weapon Attack: +4 to hit');
+INSERT INTO public.action (creature, name, description) VALUES (11, 'Engulf', e'The cube moves up to its speed. While doing so, it can enter Large or smaller creatures\' spaces. Whenever the cube enters a creature\'s space, the creature must make a DC 12 Dexterity saving throw.
+
+On a successful save, the creature can choose to be pushed 5 feet back or to the side of the cube. A creature that chooses not to be pushed suffers the consequences of a failed saving throw.
+
+On a failed save, the cube enters the creature\'s space, and the creature takes 10 (3d6) acid damage and is engulfed. The engulfed creature can\'t breathe, is restrained, and takes 21 (6d6) acid damage at the start of each of the cube\'s turns. When the cube moves, the engulfed creature moves with it.
+
+An engulfed creature can try to escape by taking an action to make a DC 12 Strength check. On a success, the creature escapes and enters a space of its choice within 5 feet of the cube.');
+INSERT INTO public.trait (creature, name, description) VALUES (6, 'Antimagic Cone', 'The beholder''s central eye creates an area of antimagic, as in the antimagic field spell, in a 150-foot cone. At the start of each of its turns, the beholder decides which way the cone faces and whether the cone is active. The area works against the beholder''s own eye rays.');
+INSERT INTO public.trait (creature, name, description) VALUES (7, 'Keen Sight and Smell', 'The owlbear has advantage on Wisdom (Perception) checks that rely on sight or smell.');
+INSERT INTO public.trait (creature, name, description) VALUES (8, 'Nimble Escape', 'The goblin can take the Disengage or Hide action as a bonus action on each of its turns.');
+INSERT INTO public.trait (creature, name, description) VALUES (9, 'Shapechanger', 'The mimic can use its action to polymorph into an object or back into its true, amorphous form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn''t transformed. It reverts to its true form if it dies.');
+INSERT INTO public.trait (creature, name, description) VALUES (9, 'Adhesive (Object Form Only)', 'The mimic adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also grappled by it (escape DC 13). Ability checks made to escape this grapple have disadvantage.');
+INSERT INTO public.trait (creature, name, description) VALUES (9, 'False Appearance (Object Form Only)', 'While the mimic remains motionless, it is indistinguishable from an ordinary object.');
+INSERT INTO public.trait (creature, name, description) VALUES (9, 'Grappler', 'The mimic has advantage on attack rolls against any creature grappled by it.');
+INSERT INTO public.trait (creature, name, description) VALUES (11, 'Ooze Cube', e'The cube takes up its entire space. Other creatures can enter the space, but a creature that does so is subjected to the cube\'s Engulf and has disadvantage on the saving throw.
+
+Creatures inside the cube can be seen but have total cover.
+
+A creature within 5 feet of the cube can take an action to pull a creature or object out of the cube. Doing so requires a successful DC 12 Strength check, and the creature making the attempt takes 10 (3d6) acid damage.
+
+The cube can hold only one Large creature or up to four Medium or smaller creatures inside it at a time.');
+INSERT INTO public.trait (creature, name, description) VALUES (11, 'Transparent', 'Even when the cube is in plain sight, it takes a successful DC 15 Wisdom (Perception) check to spot a cube that has neither moved nor attacked. A creature that tries to enter the cube''s space while unaware of the cube is surprised by the cube.');

@@ -65,7 +65,8 @@ create table creature
     constitution       uint      not null,
     intelligence       uint      not null,
     wisdom             uint      not null,
-    charisma           uint      not null
+    charisma           uint      not null,
+    "money (cp)"       integer
 );
 
 create table condition_immunities
@@ -175,7 +176,7 @@ create table monster
             references creature,
     cr   double precision not null,
     type types            not null,
-    name varchar
+    name varchar          not null
         constraint monster_pk_2
             unique
 );
@@ -193,29 +194,17 @@ create table item
     "cost (cp)" uint             not null
 );
 
-create table equipment
+create table char_equip
 (
     character integer not null
-        constraint equipment_creature_id_fk
+        constraint char_equip_creature_id_fk
             references creature,
     item      integer not null
-        constraint equipment_item_id_fk
+        constraint char_equip_item_id_fk
             references item,
     quantity  uint,
-    constraint equipment_pk
+    constraint char_equip_pk
         primary key (item, character)
-);
-
-create table compendium
-(
-    character integer not null
-        constraint compendium_creature_id_fk
-            references creature,
-    spell     varchar not null
-        constraint compendium_spell_name_fk
-            references spell,
-    constraint compendium_pk
-        primary key (spell, character)
 );
 
 create table armor
@@ -253,35 +242,63 @@ create table weapon_properties
         primary key (id, property)
 );
 
-create table player
+create table monster_instance
 (
-    id serial
-        constraint player_pk
+    type integer not null
+        constraint monster_instance_monster_id_fk
+            references monster,
+    id   serial
+        constraint monster_instance_pk
             primary key
+);
+
+create table monster_equip
+(
+    id       integer not null
+        constraint monster_equip_monster_instance_id_fk
+            references monster_instance,
+    item     integer not null
+        constraint monster_equip_item_id_fk
+            references item,
+    quantity uint    not null,
+    constraint monster_equip_pk
+        primary key (id, item)
+);
+
+create table "user"
+(
+    id       serial
+        constraint user_pk
+            primary key,
+    username varchar not null
 );
 
 create table character
 (
-    id         integer not null
+    id            integer not null
         constraint character_pk
             primary key
         constraint character_creature_id_fk
             references creature,
-    class      class   not null,
-    level      uint    not null,
-    background varchar,
-    race       race    not null,
-    player     integer not null
-        constraint character_player_id_fk
-            references player,
-    name       varchar not null
+    class         class   not null,
+    level         uint    not null,
+    background    varchar,
+    race          race    not null,
+    player        integer not null
+        constraint character_user_id_fk
+            references "user",
+    name          varchar not null,
+    proficiencies varchar not null
 );
 
 create table campaign
 (
-    id varchar not null
+    id     varchar not null
         constraint campaign_pk
-            primary key
+            primary key,
+    master integer not null
+        constraint campaign_user_id_fk
+            references "user"
 );
 
 create table char_camp
@@ -295,5 +312,78 @@ create table char_camp
     curr_pf   integer not null,
     constraint char_camp_pk
         primary key (character, campaign)
+);
+
+create table monster_camp
+(
+    campaign varchar not null
+        constraint monster_camp_campaign_id_fk
+            references campaign,
+    monster  integer not null
+        constraint monster_camp_monster_instance_id_fk
+            references monster_instance,
+    constraint monster_camp_pk
+        primary key (monster, campaign)
+);
+
+create table action
+(
+    creature    integer not null
+        constraint action_creature_id_fk
+            references creature,
+    name        varchar not null,
+    description varchar not null,
+    constraint action_pk
+        primary key (creature, name)
+);
+
+create table trait
+(
+    creature    integer not null
+        constraint trait_creature_id_fk
+            references creature,
+    name        varchar not null,
+    description varchar not null,
+    constraint trait_pk
+        primary key (creature, name)
+);
+
+create table spellcaster
+(
+    id                 integer        not null
+        constraint spellcaster_character_id_fk
+            references character,
+    caster_ability     characteristic not null,
+    spell_save_dc      uint           not null,
+    spell_bonus_attack uint           not null,
+    slot_0             uint           not null,
+    slot_1             uint           not null,
+    slot_2             uint           not null,
+    slot_3             uint           not null,
+    slot_4             uint           not null,
+    slot_5             uint           not null,
+    slot_6             uint           not null,
+    slot_8             uint           not null,
+    slot_9             uint           not null,
+    slot_7             uint           not null,
+    campaign           varchar        not null
+        constraint spellcaster_campaign_id_fk
+            references campaign,
+    constraint spellcaster_pk
+        primary key (id, campaign)
+);
+
+create table compendium
+(
+    character integer not null,
+    spell     varchar not null
+        constraint compendium_spell_name_fk
+            references spell,
+    prepared  boolean not null,
+    campaign  varchar not null,
+    constraint compendium_pk
+        primary key (character, campaign, spell),
+    constraint compendium_spellcaster_campaign_id_fk
+        foreign key (campaign, character) references spellcaster ()
 );
 
