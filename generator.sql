@@ -384,6 +384,6 @@ create table compendium
     constraint compendium_pk
         primary key (character, campaign, spell),
     constraint compendium_spellcaster_campaign_id_fk
-        foreign key (campaign, character) references spellcaster ()
+        foreign key (campaign, character) references spellcaster (campaign, id)
 );
 
