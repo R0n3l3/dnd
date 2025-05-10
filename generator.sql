@@ -10,7 +10,7 @@ create type sense as enum ('Blindsight', 'Darkvision', 'Tremorsense', 'Truesight
 
 create type class as enum ('Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard');
 
-create type race as enum ('Aasimar', 'Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Goliath', 'Halfling', 'Human', 'Orc', 'Tiefling');
+create type race as enum ('Aasimar', 'Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Goliath', 'Halfling', 'Human', 'Orc', 'Tiefling', 'Goblin');
 
 create type school as enum ('Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation');
 
@@ -24,7 +24,7 @@ create domain uint as integer
 
 create type casting as enum ('Action', 'Bonus Action', 'Reaction', '1 Minute', '1 Hour', '10 Minutes', '8 Hours', '24 Hours', '12 Hours');
 
-create type range as enum ('Self', 'Touch', 'Sight', '60 Feet', '120 Feet', '30 Feet', '5 Feet', '10 Feet', '15 Feet');
+create type range as enum ('Self', 'Touch', 'Sight', '60 Feet', '120 Feet', '30 Feet', '5 Feet', '10 Feet', '15 Feet', '90 feet');
 
 create type duration as enum ('Instantaneous', '1 Round', '10 Rounds', '1 Hour', '8 Hours', '100 Rounds', '24 Hours', 'Until Dispelled', '10 Days');
 
@@ -203,6 +203,9 @@ create table char_equip
         constraint char_equip_item_id_fk
             references item,
     quantity  uint,
+    campaign  varchar not null
+        constraint char_equip_campaign_id_fk
+            references campaign,
     constraint char_equip_pk
         primary key (item, character)
 );
