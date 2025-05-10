@@ -399,7 +399,7 @@ INSERT INTO public.trait (creature, name, description) VALUES (13, 'Extra Attack
 INSERT INTO public.trait (creature, name, description) VALUES (13, 'Ki Empowered Strikes', 'Starting at 6th level, your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.');
 INSERT INTO public.trait (creature, name, description) VALUES (13, 'Evasion', 'At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon''s lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.');
 INSERT INTO public.campaign (id, master) VALUES ('AB123CD', 4);
-INSERT INTO public.campaign (id, master) VALUES ('EF456GH', 1);
+INSERT INTO public.campaign (id, master) VALUES ('EF456GH', 3);
 INSERT INTO public.char_camp (campaign, character, curr_pf) VALUES ('AB123CD', 12, 15);
 INSERT INTO public.char_camp (campaign, character, curr_pf) VALUES ('EF456GH', 13, 61);
 INSERT INTO public.char_equip (character, item, quantity, campaign) VALUES (12, 56, 1, 'AB123CD');
