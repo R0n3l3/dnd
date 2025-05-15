@@ -238,7 +238,8 @@ create table monster_instance
             references monster,
     id   serial
         constraint monster_instance_pk
-            primary key
+            primary key,
+    curr_pf uint not null
 );
 
 create table monster_equip
