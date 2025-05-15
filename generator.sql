@@ -22,6 +22,8 @@ create domain spell_int as integer
 create domain uint as integer
     constraint positive check (VALUE >= 0);
 
+create type item_type as enum ('Armor', 'Weapon', 'Item');
+
 create type casting as enum ('Action', 'Bonus Action', 'Reaction', '1 Minute', '1 Hour', '10 Minutes', '8 Hours', '24 Hours', '12 Hours');
 
 create type range as enum ('Self', 'Touch', 'Sight', '60 Feet', '120 Feet', '30 Feet', '5 Feet', '10 Feet', '15 Feet', '90 feet');
@@ -255,7 +257,8 @@ create table monster_equip
             references item,
     quantity uint    not null,
     constraint monster_equip_pk
-        primary key (id, item)
+        primary key (id, item),
+    item_type item_type not null
 );
 
 create table "user"
@@ -308,7 +311,8 @@ create table char_equip
         constraint char_equip_campaign_id_fk
             references campaign,
     constraint char_equip_pk
-        primary key (item, character)
+        primary key (item, character),
+    item_type item_type not null
 );
 
 create table char_camp
