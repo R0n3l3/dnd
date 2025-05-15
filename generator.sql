@@ -239,7 +239,10 @@ create table monster_instance
     id   serial
         constraint monster_instance_pk
             primary key,
-    curr_pf uint not null
+    curr_pf uint not null,
+    campaign varchar not null
+        constraint monster_instance_campaign_id_fk
+            references campaign
 );
 
 create table monster_equip
@@ -319,18 +322,6 @@ create table char_camp
     curr_pf   integer not null,
     constraint char_camp_pk
         primary key (character, campaign)
-);
-
-create table monster_camp
-(
-    campaign varchar not null
-        constraint monster_camp_campaign_id_fk
-            references campaign,
-    monster  integer not null
-        constraint monster_camp_monster_instance_id_fk
-            references monster_instance,
-    constraint monster_camp_pk
-        primary key (monster, campaign)
 );
 
 create table action
