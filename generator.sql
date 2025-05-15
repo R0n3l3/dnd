@@ -194,21 +194,7 @@ create table item
     "cost (cp)" uint             not null
 );
 
-create table char_equip
-(
-    character integer not null
-        constraint char_equip_creature_id_fk
-            references creature,
-    item      integer not null
-        constraint char_equip_item_id_fk
-            references item,
-    quantity  uint,
-    campaign  varchar not null
-        constraint char_equip_campaign_id_fk
-            references campaign,
-    constraint char_equip_pk
-        primary key (item, character)
-);
+
 
 create table armor
 (
@@ -273,7 +259,8 @@ create table "user"
     id       serial
         constraint user_pk
             primary key,
-    username varchar not null
+    username varchar not null,
+    password varchar not null
 );
 
 create table character
@@ -302,6 +289,22 @@ create table campaign
     master integer not null
         constraint campaign_user_id_fk
             references "user"
+);
+
+create table char_equip
+(
+    character integer not null
+        constraint char_equip_creature_id_fk
+            references creature,
+    item      integer not null
+        constraint char_equip_item_id_fk
+            references item,
+    quantity  uint,
+    campaign  varchar not null
+        constraint char_equip_campaign_id_fk
+            references campaign,
+    constraint char_equip_pk
+        primary key (item, character)
 );
 
 create table char_camp
