@@ -263,10 +263,9 @@ create table monster_equip
 
 create table "user"
 (
-    id       serial
+    username varchar not null
         constraint user_pk
             primary key,
-    username varchar not null,
     password varchar not null
 );
 
@@ -281,7 +280,7 @@ create table character
     level         uint    not null,
     background    varchar,
     race          race    not null,
-    player        integer not null
+    player        varchar
         constraint character_user_id_fk
             references "user",
     name          varchar not null,
@@ -293,7 +292,7 @@ create table campaign
     id     varchar not null
         constraint campaign_pk
             primary key,
-    master integer not null
+    master varchar not null
         constraint campaign_user_id_fk
             references "user"
 );
